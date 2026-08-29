@@ -1,6 +1,6 @@
 """
 main.py — WeatherGPT FastAPI Application
-SIH 26068 | Ministry of Earth Sciences / IMD
+  | Ministry of Earth Sciences / IMD
 
 Endpoints:
   POST /chat       — conversational weather Q&A with grounded LLM
@@ -36,13 +36,19 @@ logger = logging.getLogger("main")
 # ─── App ──────────────────────────────────────────────────────────────────────
 app = FastAPI(
     title="WeatherGPT API",
-    description="Conversational AI weather platform for India — SIH 26068",
+    description="Conversational AI weather platform for India —  ",
     version="1.0.0",
 )
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://127.0.0.1:5173"],
+    allow_origins=[
+        "http://localhost:5173",
+        "http://127.0.0.1:5173",
+        "http://localhost:5174",
+        "http://127.0.0.1:5174",
+        "https://weathergpt-india.vercel.app",
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -225,6 +231,6 @@ async def root():
     return {
         "app": "WeatherGPT",
         "version": "1.0.0",
-        "description": "Conversational AI weather platform for India — SIH 26068",
+        "description": "Conversational AI weather platform for India —  ",
         "docs": "/docs",
     }
